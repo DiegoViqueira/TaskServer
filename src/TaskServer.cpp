@@ -5,6 +5,14 @@
 
 */
 
+#include "TaskServer.hpp"
+//NAMESPACES
+using namespace std;
+using namespace boost::asio;
+
+//Definitions
+typedef boost::packaged_task<bool> task_t;
+
 //Constuctor of Service Task implemetacion
 ServiceTask::ServiceTask() : work_io_service_(), // Construct the IO Service
 	work_(new boost::asio::io_service::work(work_io_service_)) //Construct the Work 
