@@ -7,12 +7,21 @@
 #ifndef __TASK_H_
 #define __TASK_H_
 
-    Class Task
-    {
-        Public: 
-        virtual const char* name()=0;
-        virtual int strat()=0;
-        virtual void stop()=0;
-    }
+class Task
+{
+public:
+	Task(const char * identifier) :m_sIdentifier(identifier){};
+	virtual ~Task() {};
+	const char * name(){ return m_sIdentifier.c_str();}
+	virtual bool start() = 0;
+	virtual bool stop()  =0 ;
+	
+private:
+	string m_sIdentifier;
+	
+
+};
+
+
 
 #endif
