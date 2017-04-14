@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include <time.h>
+#include <string>
 
 //BOOST LIBRARIES
 #include "boost/asio.hpp"
