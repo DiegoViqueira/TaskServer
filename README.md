@@ -14,6 +14,6 @@ c++ Task service
      
 	    Linux e.g:
 	      -
-	 -IMPORTANT: Change in Vs project the includes dir for boost.
+	- IMPORTANT: Change in Vs project the includes dir for boost.
 	 
   - Utils (https://github.com/DiegoViqueira/Utils)
