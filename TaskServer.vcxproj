@@ -163,6 +163,7 @@
   <ItemGroup>
     <ClInclude Include="export\Task.hpp" />
     <ClInclude Include="export\TaskServer.hpp" />
+    <ClInclude Include="src\TaskServer_imp.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -182,8 +183,7 @@
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\TaskServer.cpp" />
-	<ClCompile Include="..\Utils\Logger.cpp" />
-	
+    <ClCompile Include="..\Utils\Logger.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
