@@ -16,28 +16,22 @@
 #include "boost/scoped_ptr.hpp"
 
 #include "Task.hpp"
-
-#ifdef TASK_SERVER_IMPORT
-	#define TASK_SERVER_API __declspec(dllimport)	
-	# pragma message ("Importing Task Server...")
-#else
-	#define TASK_SERVER_API __declspec(dllexport)
-	# pragma message ("Exporting Task Server...")
-#endif
-
-#ifndef __TASK_SERVER_H_
-#define __TASK_SERVER_H_
+#include "TaskServer.hpp"
 
 
-class TASK_SERVER_API ServiceTask : boost::enable_shared_from_this<ServiceTask>
+#ifndef __TASK_SERVER_IMPL_H_
+#define __TASK_SERVER_IMPL_H_
+
+
+class ServiceTaskI : boost::enable_shared_from_this<ServiceTask>
 {
 public:
 
 	//Constuctor of Service Task implemetacion
-	 ServiceTask();
+	ServiceTaskI();
 
 	//Destructor shuts down the private io_service.
-	 ~ServiceTask();
+	 ~ServiceTaskI();
 	
 	//add new task
 	 void addTask(boost::shared_ptr<Task> oTask);
