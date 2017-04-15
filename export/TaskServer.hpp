@@ -17,6 +17,12 @@
 
 #include "Task.hpp"
 
+#ifdef TASK_SERVER_EXPORTS
+	#define TASK_SERVER_API __declspec(dllexport)
+#else
+	#define TASK_SERVER_API __declspec(dllimport)
+#endif
+
 #ifndef __TASK_SERVER_H_
 #define __TASK_SERVER_H_
 
@@ -31,13 +37,13 @@ public:
 	~ServiceTask();
 	
 	//add new task
-	void addTask(boost::shared_ptr<Task> oTask);
+	TASK_SERVER_API void addTask(boost::shared_ptr<Task> oTask);
 
 	//run all task scheduled
-	void run();
+	TASK_SERVER_API void run();
 
 	//stop all task scheduled
-	void stop();
+	TASK_SERVER_API void stop();
 
 
 private:
