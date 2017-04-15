@@ -22,50 +22,52 @@
 #ifndef __TASK_SERVER_IMPL_H_
 #define __TASK_SERVER_IMPL_H_
 
-
-class ServiceTaskI : boost::enable_shared_from_this<ServiceTask>
+namespace service_task
 {
-public:
 
-	//Constuctor of Service Task implemetacion
-	ServiceTaskI();
+	class ServiceTaskI : public ServiceTask
+	{
+	public:
 
-	//Destructor shuts down the private io_service.
-	 ~ServiceTaskI();
-	
-	//add new task
-	 void addTask(boost::shared_ptr<Task> oTask);
+		//Constuctor of Service Task implemetacion
+		ServiceTaskI();
 
-	//run all task scheduled
-	 void run();
+		//Destructor shuts down the private io_service.
+		~ServiceTaskI();
 
-	//stop all task scheduled
-	 void stop();
+		//add new task
+		virtual void addTask(boost::shared_ptr<Task> oTask);
 
+		//run all task scheduled
+		virtual void run();
 
-private:
-
-	/// Private io_service 
-	boost::asio::io_service work_io_service_;
-
-	/// Work for the private io_service to perform. If we do not give the
-	/// io_service some work to do then the io_service::run() function will exit
-	/// immediately.
-	boost::scoped_ptr<boost::asio::io_service::work> work_;
-
-	// Vector of Task 
-	// To Know all Task Names an Pointers to instances
-	map<string, boost::shared_ptr<Task>> m_oTask;
-
-	// Threads for All Task
-	boost::thread_group  m_ThreadGroup;
-
-	// Vector of Futures 
-	// To know the result of the execution of a Task
-	vector<pair<string, boost::shared_future<bool>>> m_futures;
-
-};
+		//stop all task scheduled
+		virtual void stop();
 
 
+	private:
 
+		/// Private io_service 
+		boost::asio::io_service work_io_service_;
+
+		/// Work for the private io_service to perform. If we do not give the
+		/// io_service some work to do then the io_service::run() function will exit
+		/// immediately.
+		boost::scoped_ptr<boost::asio::io_service::work> work_;
+
+		// Vector of Task 
+		// To Know all Task Names an Pointers to instances
+		map<string, boost::shared_ptr<Task>> m_oTask;
+
+		// Threads for All Task
+		boost::thread_group  m_ThreadGroup;
+
+		// Vector of Futures 
+		// To know the result of the execution of a Task
+		vector<pair<string, boost::shared_future<bool>>> m_futures;
+
+	};
+
+
+}
 #endif

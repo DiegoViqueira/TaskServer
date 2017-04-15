@@ -27,28 +27,25 @@
 
 #ifndef __TASK_SERVER_H_
 #define __TASK_SERVER_H_
+namespace service_task
+{
 
-
-class TASK_SERVER_API ServiceTask 
+class TASK_SERVER_API ServiceTask
 {
 public:
 
-	//Constuctor of Service Task implemetacion
-	 ServiceTask();
+	 static boost::shared_ptr< ServiceTask > Build_Service();
 
-	//Destructor shuts down the private io_service.
-	 ~ServiceTask();
-	
-	//add new task
-	 void addTask(boost::shared_ptr<Task> oTask);
+	 //add new task
+	 virtual void addTask(boost::shared_ptr<Task> oTask) = 0;
 
-	//run all task scheduled
-	 void run();
+	 //run all task scheduled
+	 virtual void run() = 0;
 
-	//stop all task scheduled
-	 void stop();
-};
+	 //stop all task scheduled
+	 virtual void stop() = 0;
+  };
 
 
-
+}
 #endif
