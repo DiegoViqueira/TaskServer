@@ -17,10 +17,10 @@
 
 #include "Task.hpp"
 
-#ifdef TASK_SERVER_EXPORTS
-	#define TASK_SERVER_API __declspec(dllexport)
+#ifdef TASK_SERVER_IMPORT
+	#define TASK_SERVER_API __declspec(dllimport)	
 #else
-	#define TASK_SERVER_API __declspec(dllimport)
+	#define TASK_SERVER_API __declspec(dllexport)	
 #endif
 
 #ifndef __TASK_SERVER_H_
