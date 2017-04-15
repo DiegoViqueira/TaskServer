@@ -19,32 +19,34 @@
 
 #ifdef TASK_SERVER_IMPORT
 	#define TASK_SERVER_API __declspec(dllimport)	
+	# pragma message ("Importing Task Server...")
 #else
-	#define TASK_SERVER_API __declspec(dllexport)	
+	#define TASK_SERVER_API __declspec(dllexport)
+	# pragma message ("Exporting Task Server...")
 #endif
 
 #ifndef __TASK_SERVER_H_
 #define __TASK_SERVER_H_
 
 
-class ServiceTask : boost::enable_shared_from_this<ServiceTask>
+class TASK_SERVER_API ServiceTask : boost::enable_shared_from_this<ServiceTask>
 {
 public:
 
 	//Constuctor of Service Task implemetacion
-	TASK_SERVER_API ServiceTask();
+	 ServiceTask();
 
 	//Destructor shuts down the private io_service.
-	TASK_SERVER_API ~ServiceTask();
+	 ~ServiceTask();
 	
 	//add new task
-	TASK_SERVER_API void addTask(boost::shared_ptr<Task> oTask);
+	 void addTask(boost::shared_ptr<Task> oTask);
 
 	//run all task scheduled
-	TASK_SERVER_API void run();
+	 void run();
 
 	//stop all task scheduled
-	TASK_SERVER_API void stop();
+	 void stop();
 
 
 private:
