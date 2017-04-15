@@ -26,15 +26,16 @@
 #ifndef __TASK_SERVER_H_
 #define __TASK_SERVER_H_
 
+
 class ServiceTask : boost::enable_shared_from_this<ServiceTask>
 {
 public:
 
 	//Constuctor of Service Task implemetacion
-	ServiceTask();
+	TASK_SERVER_API ServiceTask();
 
 	//Destructor shuts down the private io_service.
-	~ServiceTask();
+	TASK_SERVER_API ~ServiceTask();
 	
 	//add new task
 	TASK_SERVER_API void addTask(boost::shared_ptr<Task> oTask);
