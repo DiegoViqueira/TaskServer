@@ -15,14 +15,13 @@ using namespace std;
 class Task
 {
 public:
-	Task(const char * identifier) :m_sIdentifier(identifier){};
+	Task(){};
 	virtual ~Task() {};
-	const char * name(){ return m_sIdentifier.c_str();}
+	virtual const char * name() = 0;
 	virtual bool start() = 0;
 	virtual bool stop()  =0 ;
 	
-private:
-	string m_sIdentifier;
+
 	
 
 };
