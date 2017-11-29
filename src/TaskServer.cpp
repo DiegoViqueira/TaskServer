@@ -65,7 +65,10 @@ namespace service_task
 	//add new task
 	void ServiceTaskI::addTask(boost::shared_ptr<Task> oTask)
 	{
-
+		// TODO FALTA SINCRONIZAR ESTE CONTENEDOR
+		// Por el momento no genera fallas porque solo se pueden agregar Task Inicialmente dentro del Main
+		// Por lo tanto no existe cohersion con otros THREADS
+		
 		//insert new task to vector of task to execute
 		m_oTask.insert(std::make_pair(string(oTask->name()), oTask));
 
